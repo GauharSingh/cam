@@ -1,0 +1,120 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: sans-serif;
+    line-height: 24px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.app-panel {
+    text-align: center;
+    background-color: black;
+}
+
+#webcam {
+    display: block;
+    position: relative;
+    object-fit: cover;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.md-modal {
+    position: fixed;
+    z-index: 2000;
+    visibility: hidden;
+    top: 0;
+}
+
+.md-show {
+    visibility: visible;
+}
+
+.cameraControls {
+    text-align: center;
+    position: absolute;
+    bottom: 10vh;
+    width: 100%;
+    z-index: 99999;
+    background: transparent;
+    opacity: 0.7;
+    padding: 10px;
+}
+
+
+/* @font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v55/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+} */
+
+@font-face {
+    font-family: "Material Icons";
+    src: url("../font/MaterialIcons-Regular.woff2") format("woff2"), url("../font/MaterialIcons-Regular.woff") format("woff"), url("../font/MaterialIcons-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px !important;
+    color: white;
+    width: 80px;
+    height: 65px;
+    background-color: black;
+    border-radius: 83%;
+    padding-top: 15px;
+    margin: 0 10px;
+    line-height: 1;
+    display: inline-block;
+}
+
+.flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 999999;
+}
+
+#vid {
+    background-color: transparent;
+    position: absolute;
+}
+
+#scene {
+    z-index: 2000;
+    position: fixed;
+    width: 200px;
+    height: 200px;
+}
+
+#glb {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+}
+
+#final {
+    top: 0;
+    display: block;
+    z-index: 99999;
+    position: absolute;
+}
