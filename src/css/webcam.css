@@ -1,14 +1,30 @@
 html {
     height: 100%;
+    width: 100%;
 }
+
+/*
+https://stackoverflow.com/questions/20127763/video-100-width-and-height
+https://stackoverflow.com/questions/28574285/place-video-with-100-height-100-width-using-css-or-javascript
+
+http://jsfiddle.net/xcuvbgv8/
+http://jsfiddle.net/2jyLnm3L/
+
+https://stackoverflow.com/questions/47975045/in-html-page-video-tag-i-want-to-increase-height-but-not-increased
+https://stackoverflow.com/questions/34949387/full-screen-html5-video-background-without-js
+https://stackoverflow.com/questions/50512426/full-width-html5-video-with-max-height-issues
+
+*/
 
 body {
     height: 100%;
+    width: 100%;
     font-family: sans-serif;
     line-height: 24px;
     overflow: hidden;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .d-none {
@@ -18,12 +34,13 @@ body {
 .app-panel {
     text-align: center;
     background-color: black;
+    display: block !important;
+    position: relative;
 }
 
 #webcam {
-    display: block;
-    position: relative;
-    object-fit: cover;
+    position: absolute;
+    object-fit: fill;
     z-index: 999;
     pointer-events: none;
 }
@@ -33,6 +50,9 @@ body {
     z-index: 2000;
     visibility: hidden;
     top: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .md-show {

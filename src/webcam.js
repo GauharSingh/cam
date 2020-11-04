@@ -62,10 +62,28 @@ class Webcam {
         } else {
             videoConstraints.deviceId = { exact: this._selectedDeviceId };
         }
-        videoConstraints.width = window.screen.width;
-        // console.log(window.innerWidth);
-        videoConstraints.height = window.screen.height;
-        videoConstraints.resizeMode = false;
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        /*
+        var finalw;
+        var finalh;
+        if (w / 16 >= h / 9) {
+            finalw = w;
+            finalh = 'auto';
+        } else {
+            finalw = 'auto';
+            finalh = h;
+        }
+        videoConstraints.width = finalw;
+        videoConstraints.height = finalh;
+        */
+        videoConstraints.width = {
+            ideal: w
+        }
+        videoConstraints.height = {
+            ideal: h
+        }
+        // videoConstraints.resizeMode = false;
         var constraints = {
             video: videoConstraints,
             audio: false,
@@ -194,7 +212,7 @@ class Webcam {
         var c = document.getElementById("final");
         var ctx = c.getContext("2d");
         c.width = window.innerWidth;
-        c.height = window.screen.height;
+        c.height = window.innerHeight;
 
         this.render();
 
@@ -249,9 +267,8 @@ class Webcam {
             a.style.display = "none";
             url = window.URL.createObjectURL(blob);
             a.href = url;
-            a.download = `screencapture-${document.getElementById("glb").width}x${
-        document.getElementById("glb").height
-      }.png`;
+            a.download = `screencapture-${document.getElementById("glb").width}x${document.getElementById("glb").height
+                }.png`;
 
             // console.log(photo);
             // url = window.URL.createObjectURL(photo);
@@ -263,12 +280,12 @@ class Webcam {
 
             imageObj1.src = data;
 
-            let final = await new Promise(function(resolve, reject) {
-                imageObj1.onload = function() {
+            let final = await new Promise(function (resolve, reject) {
+                imageObj1.onload = function () {
                     ctx.drawImage(imageObj1, 0, 0);
                     imageObj2.src = url;
                     console.log(url);
-                    imageObj2.onload = function() {
+                    imageObj2.onload = function () {
                         ctx.drawImage(imageObj2, 0, 0);
                         var img = c.toDataURL("image/png");
                         resolve(img);

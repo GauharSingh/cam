@@ -18,7 +18,7 @@ const webcam = new Webcam(
 
 let flag = true;
 
-$("#webcam-switch").on("click", function() {
+$("#webcam-switch").on("click", function () {
     if (flag) {
         $(".md-modal").addClass("md-show");
         flag = false;
@@ -26,7 +26,7 @@ $("#webcam-switch").on("click", function() {
             .start()
             .then((result) => {
                 cameraStarted();
-                $("glb").removeClass("d-none");
+                $("#glb").removeClass("d-none");
                 console.log("webcam started");
             })
             .catch((err) => {
@@ -56,7 +56,7 @@ function cameraStopped() {
     $("#controls").addClass("d-none");
 }
 
-$("#take-photo").click(async function() {
+$("#take-photo").click(async function () {
     beforeTakePhoto();
     let picture = await webcam.snap();
     document.querySelector("#download-photo").href = picture;
@@ -104,13 +104,13 @@ function removeCapture() {
     $("#resume-camera").addClass("d-none");
 }
 
-$("#resume-camera").click(function() {
+$("#resume-camera").click(function () {
     webcam.stream().then((facingMode) => {
         removeCapture();
     });
 });
 
-$("#exit-app").click(function() {
+$("#exit-app").click(function () {
     removeCapture();
     $("#glb").addClass("d-none");
     $("#final").addClass("d-none");

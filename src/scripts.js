@@ -28,7 +28,7 @@ const canvas = document.querySelector("#glb");
 
 //var loader = new GLTFLoader().setPath("./3d-obj-loader/assets/");
 
-window.addEventListener("resize", function() {
+window.addEventListener("resize", function () {
     var width = window.innerWidth;
     var height = window.innerHeight;
     renderer.setSize(width, height);
@@ -77,8 +77,8 @@ async function init() {
     // scene.add(light4);
 
     renderer = new WebGLRenderer({ canvas, alpha: true });
-    var width = window.screen.width; //1024; //640;
-    var height = window.screen.height; //768; //480;
+    var width = window.innerWidth; //1024; //640;
+    var height = window.innerHeight; //768; //480;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);

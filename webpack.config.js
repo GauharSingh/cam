@@ -54,14 +54,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [{
-                        loader: MiniCssExtractPlugin.loader,
+                    loader: MiniCssExtractPlugin.loader,
+                },
+                {
+                    loader: "css-loader",
+                    options: {
+                        sourceMap: true,
                     },
-                    {
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
+                },
                 ],
             },
             // {
@@ -95,7 +95,8 @@ module.exports = {
         // }),
     ],
     devServer: {
-        port: 3001,
+        port: 3000,
         hot: true,
+        disableHostCheck: true
     },
 };
