@@ -114,26 +114,26 @@ module.exports = {
         // new BundleAnalyzerPlugin()
     ],
     optimization: {
-        minimize: true,
-        minimizer: [
-            /* Minfy JS */
-            new TerserPlugin({
-                terserOptions: {
-                    parallel: true,
-                    warnings: false,
-                    output: {
-                        comments: false,
-                    },
-                    mangle: true, // Note `mangle.properties` is `false` by default.
-                    compress: {
-                        drop_console: true, // Set to true on Production
-                    },
-                    extractComments: false,
-                    ie8: false,
-                    safari10: true,
-                },
-                sourceMap: false,
-            }),
-        ],
+        // minimize: true,
+        // minimizer: [
+        //     /* Minfy JS */
+        //     new TerserPlugin({
+        //         terserOptions: {
+        //             parallel: true,
+        //             warnings: false,
+        //             output: {
+        //                 comments: false,
+        //             },
+        //             mangle: true, // Note `mangle.properties` is `false` by default.
+        //             compress: {
+        //                 drop_console: true, // Set to true on Production
+        //             },
+        //             extractComments: false,
+        //             ie8: false,
+        //             safari10: true,
+        //         },
+        //         sourceMap: false,
+        //     }),
+        // ],
     },
 };

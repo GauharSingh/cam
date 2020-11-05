@@ -62,27 +62,26 @@ class Webcam {
         } else {
             videoConstraints.deviceId = { exact: this._selectedDeviceId };
         }
-        var w = window.innerWidth;
-        var h = window.innerHeight;
+        // var w = window.innerWidth;
+        // var h = window.innerHeight;
+
+        var w = { min: 1024, ideal: 1280, max: 1920 };
+        var h = { min: 576, ideal: 720, max: 1080 };
         /*
-        var finalw;
-        var finalh;
-        if (w / 16 >= h / 9) {
-            finalw = w;
-            finalh = 'auto';
-        } else {
-            finalw = 'auto';
-            finalh = h;
-        }
-        videoConstraints.width = finalw;
-        videoConstraints.height = finalh;
-        */
-        videoConstraints.width = {
-            ideal: w
-        }
-        videoConstraints.height = {
-            ideal: h
-        }
+                                                    var finalw;
+                                                    var finalh;
+                                                    if (w / 16 >= h / 9) {
+                                                        finalw = w;
+                                                        finalh = 'auto';
+                                                    } else {
+                                                        finalw = 'auto';
+                                                        finalh = h;
+                                                    }
+                                                    videoConstraints.width = finalw;
+                                                    videoConstraints.height = finalh;
+                                                    */
+        videoConstraints.width = w;
+        videoConstraints.height = h;
         // videoConstraints.resizeMode = false;
         var constraints = {
             video: videoConstraints,
@@ -114,11 +113,11 @@ class Webcam {
     }
 
     /*
-                                            1. Get permission from user
-                                            2. Get all video input devices info
-                                            3. Select camera based on facingMode
-                                            4. Start stream
-                                          */
+                                                                  1. Get permission from user
+                                                                  2. Get all video input devices info
+                                                                  3. Select camera based on facingMode
+                                                                  4. Start stream
+                                                                */
     async start(startStream = true) {
         return new Promise((resolve, reject) => {
             this.stop();
@@ -211,8 +210,8 @@ class Webcam {
     async snap() {
         var c = document.getElementById("final");
         var ctx = c.getContext("2d");
-        c.width = window.innerWidth;
-        c.height = window.innerHeight;
+        c.width = this._webcamElement.width;
+        c.height = this._webcamElement.height;
 
         this.render();
 
@@ -267,8 +266,9 @@ class Webcam {
             a.style.display = "none";
             url = window.URL.createObjectURL(blob);
             a.href = url;
-            a.download = `screencapture-${document.getElementById("glb").width}x${document.getElementById("glb").height
-                }.png`;
+            a.download = `screencapture-${document.getElementById("glb").width}x${
+        document.getElementById("glb").height
+      }.png`;
 
             // console.log(photo);
             // url = window.URL.createObjectURL(photo);
@@ -280,12 +280,12 @@ class Webcam {
 
             imageObj1.src = data;
 
-            let final = await new Promise(function (resolve, reject) {
-                imageObj1.onload = function () {
+            let final = await new Promise(function(resolve, reject) {
+                imageObj1.onload = function() {
                     ctx.drawImage(imageObj1, 0, 0);
                     imageObj2.src = url;
                     console.log(url);
-                    imageObj2.onload = function () {
+                    imageObj2.onload = function() {
                         ctx.drawImage(imageObj2, 0, 0);
                         var img = c.toDataURL("image/png");
                         resolve(img);
